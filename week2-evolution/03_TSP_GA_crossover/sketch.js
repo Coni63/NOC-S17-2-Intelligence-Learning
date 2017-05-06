@@ -6,7 +6,7 @@
 
 // Cities
 var cities = [];
-var totalCities = 15;
+var totalCities = 20;
 
 // Best path overall
 var recordDistance = Infinity;
@@ -15,6 +15,9 @@ var bestEver;
 // Population of possible orders
 var population = [];
 var popTotal = 200;
+
+var counter = 0;
+//var start = Date.now();
 
 function setup() {
   createCanvas(600, 600);
@@ -48,6 +51,7 @@ function draw() {
     if (d < recordDistance) {
       recordDistance = d;
       bestEver = population[i];
+      console.log(recordDistance);
     }
 
     // Is this the best this round?
@@ -68,6 +72,11 @@ function draw() {
   line(0, 0, width, 0);
   // Show the best ever!
   bestEver.show();
+  
+  //counter ++;
+  //time = Date.now()-start;
+  
+  //console.log(recordDistance + " : " + counter);
 
   // Map all the fitness values between 0 and 1
   var sum = 0;

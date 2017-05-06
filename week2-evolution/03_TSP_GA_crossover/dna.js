@@ -44,10 +44,21 @@ function DNA(total, order) {
 }
 
 // Shuffle array one time
+/*
 DNA.prototype.shuffle = function() {
   var i = floor(random(this.order.length));
   var j = floor(random(this.order.length));
   swap(this.order, i, j);
+}
+*/
+
+DNA.prototype.shuffle = function() {
+    for (var i = this.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
 
 // How long is this particular path?
@@ -58,7 +69,10 @@ DNA.prototype.calcDistance = function() {
     var cityA = cities[cityAIndex];
     var cityBIndex = this.order[i + 1];
     var cityB = cities[cityBIndex];
-    var d = dist(cityA.x, cityA.y, cityB.x, cityB.y);
+    //var d = dist(cityA.x, cityA.y, cityB.x, cityB.y);
+    var dx = cityA.x - cityB.x;
+    var dy = cityA.y - cityB.y;
+    var d = dx*dx + dy*dy;
     sum += d;
   }
   this.dist = sum;
